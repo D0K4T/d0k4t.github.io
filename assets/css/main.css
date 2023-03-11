@@ -835,10 +835,11 @@ section {
 # Call To Action Section
 --------------------------------------------------------------*/
 .call-to-action .container {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/img/Img-equip/03.jpg") center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/img/imagens/Logo.png") center center;
   padding: 100px 40px;
   border-radius: 15px;
   overflow: hidden;
+  background-repeat: no-repeat ;
 }
 
 .call-to-action h3 {
