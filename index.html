@@ -650,7 +650,6 @@
                 <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
               </div>
             </form>
-            <div id="status-message"></div> <!-- elemento para exibir a mensagem de status -->
           </div>
           
           <script>
@@ -660,25 +659,23 @@
             form.addEventListener('submit', (event) => {
               event.preventDefault();
               const formData = new FormData(form);
-              const searchParams = new URLSearchParams(formData).toString();
-              fetch('https://send.pageclip.co/ZaFwo4IzC9c8FZukKk6qKu4j4EKGhyCz/email-form', {
-                method: 'POST',
-                body: formData
-              })
-              .then(response => {
-                if (response.ok) {
-                  statusMessage.innerHTML = 'Mensagem enviada com sucesso.'; // exibe a mensagem de sucesso
-                  statusMessage.classList.add('sent-message');
-                  form.reset();
-                } else {
-                  throw new Error('Ocorreu um erro ao enviar a mensagem.');
+              const xhr = new XMLHttpRequest();
+              xhr.open('POST', 'https://send.pageclip.co/ZaFwo4IzC9c8FZukKk6qKu4j4EKGhyCz/email-form');
+              xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+              xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                  if (xhr.status === 200) {
+                    statusMessage.innerHTML = 'Mensagem enviada com sucesso.'; // exibe a mensagem de sucesso
+                    statusMessage.classList.add('sent-message');
+                    form.reset();
+                  } else {
+                    console.error('Ocorreu um erro ao enviar a mensagem.');
+                    statusMessage.innerHTML = 'Ocorreu um erro ao enviar a mensagem.'; // exibe a mensagem de erro
+                    statusMessage.classList.add('error-message');
+                  }
                 }
-              })
-              .catch(error => {
-                console.error(error);
-                statusMessage.innerHTML = 'Ocorreu um erro ao enviar a mensagem.'; // exibe a mensagem de erro
-                statusMessage.classList.add('error-message');
-              });
+              };
+              xhr.send(JSON.stringify(Object.fromEntries(formData)));
             });
           </script>
 
