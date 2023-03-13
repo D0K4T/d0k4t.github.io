@@ -653,29 +653,28 @@
           </div>
           
           <script>
-            const form = document.querySelector('.pageclip-form');
-            const statusMessage = document.querySelector('#text-center');
-
+            const form = document.getElementById('email-form');
+        
             form.addEventListener('submit', (event) => {
               event.preventDefault();
               const formData = new FormData(form);
-              const xhr = new XMLHttpRequest();
-              xhr.open('POST', 'https://send.pageclip.co/ZaFwo4IzC9c8FZukKk6qKu4j4EKGhyCz/email-form');
-              xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-              xhr.onreadystatechange = function () {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                  if (xhr.status === 200) {
-                    statusMessage.innerHTML = 'Mensagem enviada com sucesso.'; // exibe a mensagem de sucesso
-                    statusMessage.classList.add('sent-message');
-                    form.reset();
-                  } else {
-                    console.error('Ocorreu um erro ao enviar a mensagem.');
-                    statusMessage.innerHTML = 'Ocorreu um erro ao enviar a mensagem.'; // exibe a mensagem de erro
-                    statusMessage.classList.add('error-message');
-                  }
+              const searchParams = new URLSearchParams(formData).toString();
+              fetch('https://send.pageclip.co/ZaFwo4IzC9c8FZukKk6qKu4j4EKGhyCz/email-form', {
+              method: 'POST',
+              body: JSON.stringify(formData)
+              })
+              .then(response => {
+                if (response.ok) {
+                  alert('Mensagem enviada com sucesso.');
+                  form.reset();
+                } else {
+                  throw new Error('Ocorreu um erro ao enviar a mensagem.');
                 }
-              };
-              xhr.send(JSON.stringify(Object.fromEntries(formData)));
+              })
+              .catch(error => {
+                console.error(error);
+                alert('Ocorreu um erro ao enviar a mensagem.');
+              });
             });
           </script>
 
