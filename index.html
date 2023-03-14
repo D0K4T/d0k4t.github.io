@@ -655,35 +655,30 @@
           </div>
           
           <script>
-            const form = document.getElementById('email-form');
+            const form = document.querySelector('#email-form');
+            const sentMessage = document.querySelector('#sent-message');
+            const errorMessage = document.querySelector('.error-message');
 
             form.addEventListener('submit', (event) => {
               event.preventDefault();
 
-              const xhr = new XMLHttpRequest();
-              xhr.open('POST', 'https://send.pageclip.co/ZaFwo4IzC9c8FZukKk6qKu4j4EKGhyCz/email-form');
-              xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-
               const formData = new FormData(form);
-              const jsonData = {};
-              formData.forEach((value, key) => {
-                jsonData[key] = value;
-              });
-              const data = JSON.stringify(jsonData);
 
-              xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                  if (xhr.status === 200) {
-                    document.getElementById('sent-message').innerHTML = 'Mensagem enviada com sucesso.';
+              fetch(form.action, {
+                method: 'POST',
+                body: formData,
+              })
+                .then((response) => {
+                  if (response.ok) {
+                    sentMessage.textContent = 'Mensagem enviada com sucesso!';
                     form.reset();
                   } else {
-                    document.getElementById('sent-message').innerHTML = 'Ocorreu um erro ao enviar a mensagem.';
-                    alert('Ocorreu um erro ao enviar a mensagem.');
+                    errorMessage.textContent = 'Falha ao enviar a mensagem. Por favor, tente novamente mais tarde.';
                   }
-                }
-              };
-
-              xhr.send(data);
+                })
+                .catch((error) => {
+                  errorMessage.textContent = 'Falha ao enviar a mensagem. Por favor, tente novamente mais tarde.';
+                });
             });
           </script>
 
