@@ -644,11 +644,13 @@
               <div class="my-3">
                 <div class="loading">Enviando...</div>
                 <div class="error-message"></div>
-                <div class="sent-message">Mensagem enviada com sucesso.</div>
+                <div id="sent-message"></div>
               </div>
+              
               <div class="text-center">
                 <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
               </div>
+              
             </form>
           </div>
           
@@ -665,15 +667,17 @@
               })
               .then(response => {
                 if (response.ok) {
-                  alert('Mensagem enviada com sucesso.');
-                  form.reset();
+                    document.getElementById('sent-message').innerHTML = 'Mensagem enviada com sucesso.';
+                    form.reset();
                 } else {
-                  throw new Error('Ocorreu um erro ao enviar a mensagem.');
+                    document.getElementById('sent-message').innerHTML = 'Ocorreu um erro ao enviar a mensagem.';
+                    throw new Error('Ocorreu um erro ao enviar a mensagem.');
                 }
               })
               .catch(error => {
-                console.error(error);
-                alert('Ocorreu um erro ao enviar a mensagem.');
+                  console.error(error);
+                  document.getElementById('sent-message').innerHTML = 'Ocorreu um erro ao enviar a mensagem.';
+                  alert('Ocorreu um erro ao enviar a mensagem.');
               });
             });
           </script>
