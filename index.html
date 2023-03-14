@@ -648,42 +648,13 @@
               </div>
               
               <div class="text-center">
-                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                <button type="submit" class="pageclip-form__submit">Enviar Mensagem</button>
               </div>
               
             </form>
           </div>
           
           <script>
-            const form = document.getElementById('email-form');
-
-            form.addEventListener('submit', (event) => {
-              event.preventDefault();
-              const formData = new FormData(form);
-              const jsonData = {};
-              for (const [key, value] of formData.entries()) {
-                jsonData[key] = value;
-              }
-              fetch('https://send.pageclip.co/ZaFwo4IzC9c8FZukKk6qKu4j4EKGhyCz', {
-              method: 'POST',
-              body: formData,
-              mode: 'no-cors'
-              })
-             .then(response => {
-                if (response.ok) {
-                  document.getElementById('sent-message').innerHTML = 'Mensagem enviada com sucesso.';
-                  form.reset();
-                  } else {
-                  document.getElementById('sent-message').innerHTML = 'Ocorreu um erro ao enviar a mensagem.';
-                  throw new Error('Ocorreu um erro ao enviar a mensagem.');
-                  }
-                })
-                .catch(error => {
-                 console.error(error);
-                 document.getElementById('sent-message').innerHTML = 'Ocorreu um erro ao enviar a mensagem.';
-                 alert('Ocorreu um erro ao enviar a mensagem.');
-                });
-              });
           </script>
 
           
