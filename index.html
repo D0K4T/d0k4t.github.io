@@ -656,28 +656,33 @@
           
           <script>
             const form = document.getElementById('email-form');
-        
+
             form.addEventListener('submit', (event) => {
               event.preventDefault();
               const formData = new FormData(form);
-              const searchParams = new URLSearchParams(formData).toString();
+              const jsonData = {};
+              for (const [key, value] of formData.entries()) {
+                jsonData[key] = value;
+              }
               fetch('https://send.pageclip.co/ZaFwo4IzC9c8FZukKk6qKu4j4EKGhyCz/email-form', {
-              method: 'POST',
-              body: JSON.stringify(formData)
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonData)
               })
               .then(response => {
                 if (response.ok) {
-                    document.getElementById('sent-message').innerHTML = 'Mensagem enviada com sucesso.';
-                    form.reset();
+                  document.getElementById('sent-message').innerHTML = 'Mensagem enviada com sucesso.';
+                  form.reset();
                 } else {
-                    document.getElementById('sent-message').innerHTML = 'Ocorreu um erro ao enviar a mensagem.';
-                    throw new Error('Ocorreu um erro ao enviar a mensagem.');
+                  document.getElementById('error-message').innerHTML = 'Ocorreu um erro ao enviar a mensagem.';
+                  throw new Error('Ocorreu um erro ao enviar a mensagem.');
                 }
               })
               .catch(error => {
-                  console.error(error);
-                  document.getElementById('sent-message').innerHTML = 'Ocorreu um erro ao enviar a mensagem.';
-                  alert('Ocorreu um erro ao enviar a mensagem.');
+                console.error(error);
+                document.getElementById('error-message').innerHTML = 'Ocorreu um erro ao enviar a mensagem.';
               });
             });
           </script>
