@@ -656,26 +656,34 @@
           
           <script>
             const form = document.getElementById('email-form');
-            const sentMessage = document.getElementById('sent-message');
 
             form.addEventListener('submit', (event) => {
               event.preventDefault();
-              
-              const formData = new FormData(form);
+
               const xhr = new XMLHttpRequest();
-              xhr.open('POST', form.action);
+              xhr.open('POST', 'https://send.pageclip.co/ZaFwo4IzC9c8FZukKk6qKu4j4EKGhyCz/email-form');
+              xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
+              const formData = new FormData(form);
+              const jsonData = {};
+              formData.forEach((value, key) => {
+                jsonData[key] = value;
+              });
+              const data = JSON.stringify(jsonData);
+
               xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.readyState === 4) {
                   if (xhr.status === 200) {
-                    sentMessage.innerHTML = 'Mensagem enviada com sucesso.';
+                    document.getElementById('sent-message').innerHTML = 'Mensagem enviada com sucesso.';
                     form.reset();
                   } else {
-                    sentMessage.innerHTML = 'Ocorreu um erro ao enviar a mensagem.';
-                    console.error(xhr);
+                    document.getElementById('sent-message').innerHTML = 'Ocorreu um erro ao enviar a mensagem.';
+                    alert('Ocorreu um erro ao enviar a mensagem.');
                   }
                 }
               };
-              xhr.send(formData);
+
+              xhr.send(data);
             });
           </script>
 
