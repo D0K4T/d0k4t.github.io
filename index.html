@@ -669,7 +669,8 @@
               headers: {
               'Accept': 'application/json'
               },
-              body: formData
+              body: formData,
+              mode: 'no-cors'
               })
              .then(response => {
                 if (response.ok) {
