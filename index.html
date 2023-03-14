@@ -663,7 +663,7 @@
               const searchParams = new URLSearchParams(formData).toString();
               fetch('https://send.pageclip.co/ZaFwo4IzC9c8FZukKk6qKu4j4EKGhyCz/email-form', {
               method: 'POST',
-              body: formData
+              body: JSON.stringify(formData)
               })
               .then(response => {
                 if (response.ok) {
