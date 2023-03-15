@@ -1402,6 +1402,78 @@ section {
 .Equipamentos-details .swiper-button-next:hover:after {
   background-color: rgba(0, 0, 0, 0.6);
 }
+/*Inicio codigo final-page*/
+.final-page{
+  display: none;
+}
+.final-page  h1 {
+  font-weight: bold;
+  margin: 15px 0 5px 0px;
+  padding-top: 20px;
+}
+
+.final-page h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.final-page h3:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--color-primary);
+  left: 0;
+  bottom: 0;
+}
+
+.final-page ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.final-page ul li {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+  font-size: 16px;
+}
+
+.final-page ul strong {
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #9c9c9c;
+  font-size: 12px;
+}
+
+.final-page .btn-visit {
+  padding: 8px 40px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.final-page .btn-visit:hover {
+  background: var(--color-secondary);
+}
+/*fim codigo final-page*/
+@media (max-width: 992px) {
+  .Equipamentos-info{
+    display: none;
+  }
+  .final-page{
+    display: block;
+  }
+  .col-lg-3 .subclasse{
+    display: none;
+  }
+}
 
 @media (max-width: 575px) {
 
@@ -1409,6 +1481,7 @@ section {
   .Equipamentos-details .swiper-button-next {
     display: none;
   }
+  
 }
 .Equipamentos-details .Equipamentos-info  h1 {
   font-weight: bold;
@@ -1472,6 +1545,13 @@ section {
   font-size: 26px;
   font-weight: 700;
   margin-bottom: 20px;
+}
+
+.fotos{
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding: 25px;
 }
 
 .Equipamentos-details .Equipamentos-description p {
@@ -2130,9 +2210,9 @@ section {
   border-top-right-radius: 50px;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
-  
-  width: 70%;
-  height: 70%;
+  max-width: 600px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: bottom;
 }
@@ -2149,12 +2229,19 @@ section {
   height: auto;
 }
 
-
+.flutuacao{
+  display: flex;
+  flex-direction: row;
+}
 /* Esconde o elemento em dispositivos móveis */
 @media (max-width: 800px) {
   .hide-on-mobile {
     display: none;
   }
+  .flutuacao{
+    flex-direction: column;
+  }
 }
+
 
 
