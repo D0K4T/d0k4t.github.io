@@ -92,8 +92,6 @@ section {
 
 
 
-
-
 /*--------------------------------------------------------------
 # Breadcrumbs
 --------------------------------------------------------------*/
@@ -245,11 +243,13 @@ section {
 --------------------------------------------------------------*/
 .topbar {
   background: var(--color-primary);
-  height: 40px;
-  font-size: 12px;
+  height: 80%;
+  font-size: 80%;
   transition: all 0.5s;
   color: #fff;
-  padding: 0;
+  padding: 1% 0;
+  margin: auto;
+  text-align: justify;
 }
 
 .topbar .contact-info i {
@@ -260,7 +260,7 @@ section {
 
 .topbar .contact-info i a,
 .topbar .contact-info i span {
-  padding-left: 5px;
+  padding-left: 0.5rem;
   color: #fff;
 }
 
@@ -268,7 +268,7 @@ section {
 
   .topbar .contact-info i a,
   .topbar .contact-info i span {
-    font-size: 14px;
+    font-size: 80%;
   }
 }
 
@@ -1040,6 +1040,7 @@ section {
 --------------------------------------------------------------*/
 .testimonials .testimonial-wrap {
   padding-left: 10px;
+  
 }
 
 .testimonials .testimonial-item {
@@ -1048,13 +1049,14 @@ section {
   margin: 30px 10px;
   box-shadow: 0px 0 15px rgba(0, 0, 0, 0.1);
   position: relative;
-  background: #fff;
+  background: #eaeaea;
   border-radius: 10px;
 }
 
 .testimonials .testimonial-item .testimonial-img {
   width: 250px;
   margin-right: 15px;
+  
 }
 
 
@@ -1063,6 +1065,7 @@ section {
   color: var(--color-secondary);
   font-size: 26px;
   line-height: 0;
+  
 }
 
 .testimonials .testimonial-item .quote-icon-left {
@@ -1113,6 +1116,7 @@ section {
   .testimonials .testimonial-item .testimonial-img {
     position: static;
     left: auto;
+    
   }
 }
 
@@ -1210,6 +1214,7 @@ section {
 .portfolio-details .products-details-slider img {
   width: 100%;
 }
+
 
 .portfolio-details .products-details-slider .swiper-pagination .swiper-pagination-bullet {
   width: 12px;
@@ -1480,6 +1485,8 @@ section {
   height: 100%;
   margin-bottom: 50px;
 }
+
+
 
 .Equipamentos-details .Equipamentos-description .testimonial-item .testimonial-img {
   width: 90px;
@@ -1758,6 +1765,12 @@ section {
   background-repeat: no-repeat;
   padding: 250px 0 0 0;
 }
+@media (max-width: 800px) {
+  .hero {
+   background-color: var(--color-primary);
+   background-image: none;
+  }
+}
 
 @media (min-width: 1365px) {
   .hero {
@@ -1821,6 +1834,7 @@ section {
   .hero .btn-watch-video {
     font-size: 14px;
   }
+  
 }
 
 .hero .icon-boxes {
@@ -2110,13 +2124,31 @@ section {
   }
 }
 
-.swiper-slide img {
-  border: 2px solid #fff;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+.responsive-img img {
+  border: 20px solid #fff;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  
+  width: 70%;
+  height: 70%;
+  object-fit: cover;
+  object-position: bottom;
 }
+
+ video {
+  border: 20px solid #fff;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  object-fit: cover;
+  object-position: bottom;
+  max-width: 100%;
+  height: auto;
+}
+
 
 /* Esconde o elemento em dispositivos móveis */
 @media (max-width: 800px) {
