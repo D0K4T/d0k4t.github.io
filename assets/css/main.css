@@ -2216,6 +2216,27 @@ section {
   object-fit: cover;
   object-position: bottom;
 }
+.tamanho-img{
+  border: 20px solid #fff;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  width: 70%;
+  height: 70%;
+  object-fit: cover;
+  object-position: bottom;
+}
+.swiper-wrapper-product{
+  position: relative;
+  width: 70%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  transition-property: transform;
+  box-sizing: content-box;
+}
+
 
  video {
   border: 20px solid #fff;
@@ -2241,7 +2262,12 @@ section {
   .flutuacao{
     flex-direction: column;
   }
-}
 
+}
+@media (max-width: 768px) {
+  .swiper-wrapper-product{
+   width: 150%;
+  }
+}
 
 
